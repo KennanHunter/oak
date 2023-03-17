@@ -45,8 +45,14 @@ with dai.Device(pipeline) as device:
         try:
             h265Packet = q.get()  # Blocking call, will wait until a new data has arrived
             assert isinstance(h265Packet, dai.Buffer)
-            print(f"Sending {h265Packet.getData().size}")
-            sock.sendto(h265Packet.getData().data, (UDP_IP, UDP_PORT))
+
+            size = h265Packet.getData().size
+            if size < 65_507:
+                print(f"👍 Sending packet w/{size} bytes", flush=True)
+                sock.sendto(h265Packet.getData().data, (UDP_IP, UDP_PORT))
+            else:
+                print(
+                    f"😞 Packet w/{size} bytes too large, skipping", flush=True)
         except KeyboardInterrupt:
             # Keyboard interrupt (Ctrl + C) detected
             break

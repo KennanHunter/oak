@@ -13,7 +13,7 @@ server.on("error", (err) => {
 });
 
 server.on("message", (msg, rinfo) => {
-  console.log("packet received " + msg.length.toLocaleString());
+  console.log("👍 packet received " + msg.length.toLocaleString());
   writer.write(msg);
 });
 
