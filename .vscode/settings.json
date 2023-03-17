@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "bitstream",
+        "Bootloader",
+        "depthai",
+        "imshow",
+        "opencv",
+        "tofile",
+        "xout"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
+}
